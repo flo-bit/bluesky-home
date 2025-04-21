@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Links from "../../components/Links.astro";
+import DesktopNavigation from "../../components/Navigation/DektopNavigation.astro";
+---
+
+<Layout>
+  <DesktopNavigation
+    items={["about", "links", "feed", "blog"]}
+    active="links"
+  />
+
+  <Links />
+</Layout>

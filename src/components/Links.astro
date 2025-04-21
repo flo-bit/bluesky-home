@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+
+const links = await getCollection("links");
+
+console.log(links);
+---
+
+<div class="text-white mt-6 px-4 flex flex-col gap-6">
+  {
+    links.map((link) => (
+      <div>
+        <a
+          href={link.data.value.url}
+          target="_blank"
+          class="font-medium text-accent-600 dark:text-accent-400"
+        >
+          {link.data.value.label ?? link.data.value.url}
+        </a>
+
+        <div class="text-base-600 dark:text-base-400 mt-1 text-sm">
+          {link.data.value.description}
+        </div>
+      </div>
+    ))
+  }
+</div>

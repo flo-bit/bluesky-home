@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { blueskyPostToPostData, Post } from "../../components/post";
+import DesktopNavigation from "../../components/Navigation/DektopNavigation.astro";
+
+let posts = await getCollection("posts");
+
+const profile = await getCollection("profile");
+
+console.log(profile);
+---
+
+<Layout>
+  <DesktopNavigation items={["about", "links", "feed", "blog"]} active="feed" />
+
+  <div class="flex w-full flex-col max-w-2xl px-4 mt-6">
+    {
+      posts.map((post) => (
+        <Post
+          data={blueskyPostToPostData(post.data)}
+          client:visible
+          class="py-4 border-b border-base-500/20"
+        />
+      ))
+    }
+  </div>
+</Layout>

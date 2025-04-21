@@ -1,0 +1,22 @@
+---
+import { Github, Bluesky } from "simple-icons-astro";
+import { getCollection } from "astro:content";
+
+const socialLinks = await getCollection("socialLinks");
+
+console.log(socialLinks);
+---
+
+<div class="flex flex-wrap gap-4">
+  {
+    socialLinks.map((link) => (
+      <a
+        href={link.data.value.url}
+        target="_blank"
+        class="text-white hover:text-accent-600 dark:hover:text-accent-400"
+      >
+        {link.data.value.name === "github" ? <Github /> : <Bluesky />}
+      </a>
+    ))
+  }
+</div>
