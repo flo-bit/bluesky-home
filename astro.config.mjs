@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -13,6 +13,11 @@ export default defineConfig({
 
   integrations: [svelte()],
 
-  site: "https://flo-bit.dev",
-  base: "/bluesky-home",
+  site: "https://bluesky-home.pages.dev/",
+  base: "/",
+  env: {
+    schema: {
+      HANDLE: envField.string({ context: "client", access: "public" }),
+    }
+  }
 });
