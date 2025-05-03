@@ -2,19 +2,17 @@
 import type { Item } from "./items";
 import NavigationItem from "./NavigationItem.svelte";
 
-let classes = "";
-
 let { items, active } = Astro.props;
 ---
 
-<nav class="mt-8 sm:mt-0">
+<nav class="mt-8 sm:mt-0 max-w-full">
   <ul
-    class="flex rounded-full px-3 text-sm font-medium text-base-800 dark:text-base-200"
+    class="flex flex-wrap px-3 text-sm font-medium text-base-800 dark:text-base-200"
   >
     {
       items.map((item: Item) => (
         <NavigationItem
-          href={`/bluesky-home/${item === "about" ? "" : item}`}
+          href={`/${item === "about" ? "" : item}`}
           isActive={active == item}
         >
           {item}

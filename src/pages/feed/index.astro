@@ -2,17 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { blueskyPostToPostData, Post } from "../../components/post";
-import DesktopNavigation from "../../components/Navigation/DektopNavigation.astro";
+import Navigation from "../../components/Navigation/Navigation.astro";
 
 let posts = await getCollection("posts");
 
 const profile = await getCollection("profile");
-
-console.log(profile);
 ---
 
 <Layout>
-  <DesktopNavigation items={["about", "links", "feed", "blog"]} active="feed" />
+  <Navigation active="feed" />
 
   <div class="flex w-full flex-col max-w-2xl px-4 mt-6">
     {

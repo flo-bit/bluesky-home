@@ -1,24 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import DesktopNavigation from "../components/Navigation/DektopNavigation.astro";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import Markdown from "../layouts/Markdown.astro";
+import Navigation from "../components/Navigation/Navigation.astro";
+import About from "../components/About.astro";
 
 const about = await getCollection("about");
-console.log(about);
-
-const { Content } = await render(about[0]);
 ---
 
 <Layout>
-  <DesktopNavigation
-    items={["about", "links", "feed", "blog"]}
-    active="about"
-  />
+  <Navigation active="about" />
 
   <div class="mt-8 mx-4">
     <Markdown>
-      <Content />
+      {about.length > 0 ? <About /> : "No about page found"}
     </Markdown>
   </div>
 </Layout>

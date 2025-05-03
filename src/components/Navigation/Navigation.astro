@@ -1,0 +1,10 @@
+---
+import DesktopNavigation from "./DektopNavigation.astro";
+
+let { active } = Astro.props;
+---
+
+<DesktopNavigation
+  items={["about", "links", "feed", "blog", "comments"]}
+  active={active}
+/>

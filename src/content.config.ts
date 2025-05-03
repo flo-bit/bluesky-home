@@ -2,40 +2,44 @@ import { defineCollection } from "astro:content";
 import { authorFeedLoader } from "@ascorbic/bluesky-loader";
 import { authorBlogPostsLoader, authorLinksLoader, authorProfileLoader, authorSocialLinksLoader, authorAboutLoader } from "./utils/atproto";
 
+import { HANDLE } from "astro:env/client";
+
+console.log(HANDLE);
+
 const posts = defineCollection({
   loader: authorFeedLoader({
-    identifier: 'flo-bit.dev',
+    identifier: HANDLE,
     filter: 'posts_no_replies',
   }),
 });
 
 const links = defineCollection({
   loader: authorLinksLoader({
-    identifier: 'flo-bit.dev',
+    identifier: HANDLE,
   }),
 });
 
 const socialLinks = defineCollection({
   loader: authorSocialLinksLoader({
-    identifier: 'flo-bit.dev',
+    identifier: HANDLE,
   }),
 });
 
 const profile = defineCollection({
   loader: authorProfileLoader({
-    identifier: 'flo-bit.dev',
+    identifier: HANDLE,
   }),
 });
 
 const blog = defineCollection({
   loader: authorBlogPostsLoader({
-    identifier: 'flo-bit.dev',
+    identifier: HANDLE,
   }),
 });
 
 const about = defineCollection({
   loader: authorAboutLoader({
-    identifier: 'flo-bit.dev',
+    identifier: HANDLE,
   }),
 });
 

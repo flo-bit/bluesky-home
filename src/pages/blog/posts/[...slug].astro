@@ -4,8 +4,8 @@ import { type CollectionEntry, render } from "astro:content";
 import FormattedDate from "../../../components/FormattedDate.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import DesktopNavigation from "../../../components/Navigation/DektopNavigation.astro";
 import Markdown from "../../../layouts/Markdown.astro";
+import Navigation from "../../../components/Navigation/Navigation.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -18,14 +18,11 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-console.log(post);
 const { Content } = await render(post);
-
-console.log(Content);
 ---
 
 <Layout>
-  <DesktopNavigation items={["about", "links", "feed", "blog"]} active="blog" />
+  <Navigation active="blog" />
 
   <main class="px-4">
     <Markdown>
