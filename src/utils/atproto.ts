@@ -92,7 +92,7 @@ export const authorLinksLoader = ({
 		  fetching: do {
 			const data = await listRecords({
 			  did,
-			  collection: "link.flo-bit.dev",
+			  collection: "dev.flo-bit.links",
 			  cursor,
 			});
   
@@ -268,13 +268,13 @@ export const authorAboutLoader = ({
 				id: data.uri,
 				data: parsed,
 				body: parsed.plaintext,
-				rendered: {html: await marked.parse(data.value.content)},
+				rendered: {html: await marked.parse(data.value.about)},
 			  });
 			  
   
 		} catch (error) {
 		  logger.error(
-			`Failed to load Bluesky links. ${(error as Error).message}`,
+			`Failed to load Bluesky about. ${(error as Error).message}`,
 		  );
 		}
 	  },
